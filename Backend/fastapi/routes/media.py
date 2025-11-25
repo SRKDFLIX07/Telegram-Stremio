@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Query
 from Backend.fastapi.db import db
+import traceback
 
 router = APIRouter()
 
@@ -20,5 +21,5 @@ async def list_media(
         items = await cursor.to_list(length=page_size)
         return {"items": items, "page": page, "page_size": page_size}
     except Exception as e:
+        traceback.print_exc()   # logs full error in Heroku
         return {"error": str(e)}
- 
