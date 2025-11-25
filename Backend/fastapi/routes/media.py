@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Query
 from Backend.fastapi.db import db
-import traceback
+import traceback   # <-- add this import
 
 router = APIRouter()
 
@@ -12,7 +12,7 @@ async def list_media(
     search: str = ""
 ):
     try:
-        collection = db[media_type]   # ensure collection exists
+        collection = db[media_type]
         query = {}
         if search:
             query = {"title": {"$regex": search, "$options": "i"}}
@@ -21,5 +21,5 @@ async def list_media(
         items = await cursor.to_list(length=page_size)
         return {"items": items, "page": page, "page_size": page_size}
     except Exception as e:
-        traceback.print_exc()   # logs full error in Heroku
+        traceback.print_exc()   # <-- yahan add karo
         return {"error": str(e)}
