@@ -9,5 +9,9 @@ pytz
 tgcrypto
 themoviedb
 uvicorn
+uvicorn[standard]
 itsdangerous
 jinja2
+python-multipart
+starlette
+pymongo
