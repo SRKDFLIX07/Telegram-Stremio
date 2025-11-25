@@ -1,6 +1,5 @@
 import uvicorn
 from Backend.config import Telegram
-from Backend.fastapi.main import app
 
 
 Port = Telegram.PORT
